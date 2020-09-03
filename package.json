@@ -1,0 +1,21 @@
+{
+  "name": "talk-to-gdbmi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "repl": "node --experimental-repl-await"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "callback-to-generator": "git+https://github.com/yniks/callback-to-generator.git",
+    "execa": "^4.0.3",
+    "gdb-mi-output-parser": "git+https://github.com/yniks/gdb-mi-output-parser.git",
+    "lodash-match-pattern": "^2.2.3",
+    "object-pattern-match": "git+https://github.com/yniks/object-pattern-match.git",
+    "pump": "^3.0.0"
+  }
+}
