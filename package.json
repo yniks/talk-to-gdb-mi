@@ -11,11 +11,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "callback-to-generator": "git+https://github.com/yniks/callback-to-generator.git",
     "execa": "^4.0.3",
     "gdb-mi-output-parser": "git+https://github.com/yniks/gdb-mi-output-parser.git",
-    "lodash-match-pattern": "^2.2.3",
-    "object-pattern-match": "git+https://github.com/yniks/object-pattern-match.git",
-    "pump": "^3.0.0"
+    "object-pattern-match": "git+https://github.com/yniks/object-pattern-match.git"
   }
 }

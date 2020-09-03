@@ -66,7 +66,6 @@ class Parser extends Transform {
       })
       this.pattern=pattern
     }
-  
     _transform(message, encoding, next) {
       if(matchPattern(message,this.pattern))
         return this.push(null);

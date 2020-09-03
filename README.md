@@ -45,6 +45,6 @@ var outstream=gdb.onmessage({'async-type':(a)=>a!==undefined})
 ```
 
 ## References
-- How does this library parses messages? It uses [yniks/gdb-mi-output-parser](https://github.com/yniks/gdb-mi-output-parser).
+- How do this library parses messages? It uses [yniks/gdb-mi-output-parser](https://github.com/yniks/gdb-mi-output-parser).
 - Where to find information about GDB/MI message type,class etc ? refer [README.md of above mentioned repo](https://github.com/yniks/gdb-mi-output-parser/blob/master/Readme.md).
 - Message pattern matching ? It uses  [yniks/object-pattern-match](https://github.com/yniks/object-pattern-match).
