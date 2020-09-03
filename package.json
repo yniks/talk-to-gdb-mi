@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "debug": "^4.1.1",
     "execa": "^4.0.3",
     "gdb-mi-output-parser": "git+https://github.com/yniks/gdb-mi-output-parser.git",
     "object-pattern-match": "git+https://github.com/yniks/object-pattern-match.git"

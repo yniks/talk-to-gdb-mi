@@ -43,6 +43,12 @@ var outstream=gdb.onmessage({'async-type':(a)=>a!==undefined})
 
 
 ```
+## DEBUG
+- `DEBUG=msgstream:*` all logs at important points in stream pipelining
+- `DEBUG=msgstream:error`
+- `DEBUG=msgstream:counter`
+- `DEBUG=msgstream:matcher`
+- `DEBUG=msgstream:selfdestruct`
 
 ## References
 - How do this library parses messages? It uses [yniks/gdb-mi-output-parser](https://github.com/yniks/gdb-mi-output-parser).
