@@ -1,8 +1,7 @@
-const execa=require('execa')
-
-const debug=require('debug')
-const dmsgstream=debug('msgstream')
-const derror=debug('msgstream:error')
+const execa=require('execa');
+const debug=require('debug');
+const dmsgstream=debug('msgstream');
+const derror=debug('msgstream:error');
 const dmatcher=debug('msgstream:matcher')
 const dcounter=debug('msgstream:counter')
 const dselfdestruct=debug('msgstream:selfdestruct')
@@ -50,7 +49,7 @@ async function getgdb(targetpath='',gdgcwd=null)
         request(string)
         {
             var token=this.send(string)
-            return this.onmessage({token,'async-type':'result-record'},{sequenceEnded:true})
+            return this.onmessage({token,'async-type':'result-record'},{seq_num:function(num){return this[Symbol.for('firstSequence')]==num},sequenceEnded:true})
         },
         stop()
         {
