@@ -66,8 +66,14 @@ class Parser extends Transform {
         writableObjectMode: true
       })
       this.pattern=pattern
+      this._transform=(message, encoding, next)=>{
+        pattern[Symbol.for("firstMessage")]=message.msg_num
+        pattern[Symbol.for("firstSequence")]=message.seq_num
+        this._transform=this._transform_
+        return this._transform(message, encoding, next)
+      }
     }
-    _transform(message, encoding, next) {
+    _transform_(message, encoding, next) {
       if(matchPattern(this.pattern,message))
         return this.push(null);
       else return next(null,message)        
