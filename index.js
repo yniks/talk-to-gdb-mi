@@ -7,7 +7,7 @@ const dmatcher=debug('msgstream:matcher')
 const dcounter=debug('msgstream:counter')
 const dselfdestruct=debug('msgstream:selfdestruct')
 
-const {pipeline}=require('stream')
+const {pipeline, PassThrough}=require('stream')
 const path=require('path')
 const {Matcher, Parser, UTF8 ,Counter,SelfDestruct,Splitter}=require('./util.streams');
 async function getgdb(targetpath='',gdgcwd=null)
@@ -25,16 +25,16 @@ async function getgdb(targetpath='',gdgcwd=null)
      return {
         _instance:gdb,
         onmessage(pattern={},untill=null)
-        {   var output;
-            if (untill){
-                output=pipeline(messages,new SelfDestruct(untill),()=>{})
-                output.on('end',(data)=>{dselfdestruct('pattern',pattern,'is self destroyed')})
-            }
-            else output=messages
-            output= pipeline(output,new Matcher(pattern),()=>{console.log(pattern,"is not being listened!")})
-            output.on('data',(data)=>{dmatcher('pattern',pattern,'matched with',data)})
-            
-            return output
+        {       
+                var passthru=messages.pipe(new PassThrough({writableObjectMode:true,readableObjectMode:true}))
+                if (untill){
+                    var output=pipeline(passthru,new SelfDestruct(untill),()=>{console.log(pattern,"is destroyed!");output.destroy()})
+                    output.on('end',(data)=>{dselfdestruct('pattern',pattern,'is self destroyed')})
+                }else var output=passthru
+                var resultpipe= pipeline(output,new Matcher(pattern),()=>{console.log(pattern,"is not being listened!");passthru.destroy()})
+                resultpipe.on('data',(data)=>{dmatcher('pattern',pattern,'matched with',data)})
+                resultpipe.on('end',()=>{dmatcher(pattern ,'stream ended.');messages.unpipe(passthru)})
+                return resultpipe
         },
         send(string)
         {
