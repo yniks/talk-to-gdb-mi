@@ -9,7 +9,8 @@ class Matcher extends Transform {
     constructor(pattern={}) {
       super({
         readableObjectMode: true,
-        writableObjectMode: true
+        writableObjectMode: true,
+        readableHighWaterMark:100000,
       })
       this.pattern=pattern
     }
