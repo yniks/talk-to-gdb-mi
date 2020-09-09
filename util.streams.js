@@ -1,4 +1,4 @@
-const {parseLine}=require('gdb-mi-output-parser')
+const {ParserTransformer}=require('gdb-mi-output-parser')
 const matchPattern = require('object-pattern-match');
 const {Transform}=require('stream')
 /**
@@ -16,7 +16,7 @@ class Matcher extends Transform {
     }
   
     _transform(message, encoding, next) {
-        
+        //patch undefined token number
       if(this.pattern&&(matchPattern(this.pattern,message)))
         {
             return next(null,message)
@@ -24,25 +24,6 @@ class Matcher extends Transform {
       else next()
     }
   }
-
-/**
- *  Parse Function,Must be used to parse GDB MI output
- */
-class Parser extends Transform {
-    constructor() {
-      super({
-        readableObjectMode: true,
-        writableObjectMode: true
-      })
-    }
-  
-    _transform(chunk, encoding, next) {
-        return next(null,parseLine(chunk))        
-    }
-  }
-  /**
-   *  Parse Function,Must be used to parse GDB MI output
-   */
   class UTF8 extends Transform {
     constructor() {
       super({
@@ -113,4 +94,4 @@ class Parser extends Transform {
             return next()
         }
       }
-  module.exports = {Matcher,Parser ,UTF8 ,Counter,SelfDestruct,Splitter}
+  module.exports = {Matcher,UTF8 ,Counter,SelfDestruct,Splitter,Parser:ParserTransformer}
