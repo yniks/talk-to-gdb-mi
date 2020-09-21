@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "repl": "node --experimental-repl-await"
+    "repl": "node --experimental-repl-await --inspect-brk=0.0.0.0"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +13,7 @@
   "dependencies": {
     "debug": "^4.1.1",
     "execa": "^4.0.3",
-    "gdb-mi-output-parser": "git+ssh://git@github.com:yniks/gdb-mi-output-parser.git",
+    "gdb-mi-output-parser": "git+https://github.com/yniks/gdb-mi-output-parser.git",
     "object-pattern-match": "git+ssh://git@github.com:yniks/object-pattern-match.git"
   }
 }

@@ -1,5 +1,5 @@
 # A Simple API for  GNU debugger's Machine Interface (GNU/MI).
-
+# :warning: DEPRECIATED IN FAVOR OF ANOTHER LIGHTWEIGHT IMPLEMENTATION ,TALK-TO-GDB
 ### What does this library enable?
 - built in parsing
 - `pattern` based message filter

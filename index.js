@@ -49,7 +49,7 @@ async function getgdb(targetpath='',gdgcwd=null)
         request(string)
         {
             var token=this.send(string)
-            return this.onmessage({token,'async-type':'result-record'},{seq_num:function(num){return this[Symbol.for('firstSequence')]==num},sequenceEnded:true})
+            return this.onmessage({token,'async-type':'result-record'},{sequenceEnded:true})
         },
         stop()
         {
